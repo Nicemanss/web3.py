@@ -6,7 +6,7 @@ A Python implementation of [web3.js](https://github.com/ethereum/web3.js)
 
 Read more in the [documentation on ReadTheDocs](http://web3py.readthedocs.io/). [View the change log on Github](docs/releases.rst).
 
-## Developer Setup
+## Setup
 
 ```sh
 git clone git@github.com:Nicemanss/web3.py.git
@@ -28,7 +28,7 @@ virtualenv venv
 pip install -e .[dev]
 ```
 
-To test the installation, you can run the following command inside this directory:
+To test the installation, run the following command:
 
 ```sh
 python3 example.py
