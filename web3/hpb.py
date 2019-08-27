@@ -55,7 +55,7 @@ from web3.module import (
 )
 
 
-class Eth(Module):
+class Hpb(Module):
     account = Account()
     defaultAccount = empty
     defaultBlock = "latest"
@@ -71,45 +71,45 @@ class Eth(Module):
 
     @property
     def protocolVersion(self):
-        return self.web3.manager.request_blocking("eth_protocolVersion", [])
+        return self.web3.manager.request_blocking("hpb_protocolVersion", [])
 
     @property
     def syncing(self):
-        return self.web3.manager.request_blocking("eth_syncing", [])
+        return self.web3.manager.request_blocking("hpb_syncing", [])
 
     @property
     def coinbase(self):
-        return self.web3.manager.request_blocking("eth_coinbase", [])
+        return self.web3.manager.request_blocking("hpb_coinbase", [])
 
     @property
     def mining(self):
-        return self.web3.manager.request_blocking("eth_mining", [])
+        return self.web3.manager.request_blocking("hpb_mining", [])
 
     @property
     def hashrate(self):
-        return self.web3.manager.request_blocking("eth_hashrate", [])
+        return self.web3.manager.request_blocking("hpb_hashrate", [])
 
     @property
     def gasPrice(self):
-        return self.web3.manager.request_blocking("eth_gasPrice", [])
+        return self.web3.manager.request_blocking("hpb_gasPrice", [])
 
     @property
     def accounts(self):
-        return self.web3.manager.request_blocking("eth_accounts", [])
+        return self.web3.manager.request_blocking("hpb_accounts", [])
 
     @property
     def blockNumber(self):
-        return self.web3.manager.request_blocking("eth_blockNumber", [])
+        return self.web3.manager.request_blocking("hpb_blockNumber", [])
 
     @property
     def chainId(self):
-        return self.web3.manager.request_blocking("eth_chainId", [])
+        return self.web3.manager.request_blocking("hpb_chainId", [])
 
     def getBalance(self, account, block_identifier=None):
         if block_identifier is None:
             block_identifier = self.defaultBlock
         return self.web3.manager.request_blocking(
-            "eth_getBalance",
+            "hpb_getBalance",
             [account, block_identifier],
         )
 
@@ -117,7 +117,7 @@ class Eth(Module):
         if block_identifier is None:
             block_identifier = self.defaultBlock
         return self.web3.manager.request_blocking(
-            "eth_getStorageAt",
+            "hpb_getStorageAt",
             [account, position, block_identifier]
         )
 
@@ -125,7 +125,7 @@ class Eth(Module):
         if block_identifier is None:
             block_identifier = self.defaultBlock
         return self.web3.manager.request_blocking(
-            "eth_getProof",
+            "hpb_getProof",
             [account, positions, block_identifier]
         )
 
@@ -133,20 +133,20 @@ class Eth(Module):
         if block_identifier is None:
             block_identifier = self.defaultBlock
         return self.web3.manager.request_blocking(
-            "eth_getCode",
+            "hpb_getCode",
             [account, block_identifier],
         )
 
     def getBlock(self, block_identifier, full_transactions=False):
         """
-        `eth_getBlockByHash`
-        `eth_getBlockByNumber`
+        `hpb_getBlockByHash`
+        `hpb_getBlockByNumber`
         """
         method = select_method_for_block_identifier(
             block_identifier,
-            if_predefined='eth_getBlockByNumber',
-            if_hash='eth_getBlockByHash',
-            if_number='eth_getBlockByNumber',
+            if_predefined='hpb_getBlockByNumber',
+            if_hash='hpb_getBlockByHash',
+            if_number='hpb_getBlockByNumber',
         )
 
         result = self.web3.manager.request_blocking(
@@ -159,14 +159,14 @@ class Eth(Module):
 
     def getBlockTransactionCount(self, block_identifier):
         """
-        `eth_getBlockTransactionCountByHash`
-        `eth_getBlockTransactionCountByNumber`
+        `hpb_getBlockTransactionCountByHash`
+        `hpb_getBlockTransactionCountByNumber`
         """
         method = select_method_for_block_identifier(
             block_identifier,
-            if_predefined='eth_getBlockTransactionCountByNumber',
-            if_hash='eth_getBlockTransactionCountByHash',
-            if_number='eth_getBlockTransactionCountByNumber',
+            if_predefined='hpb_getBlockTransactionCountByNumber',
+            if_hash='hpb_getBlockTransactionCountByHash',
+            if_number='hpb_getBlockTransactionCountByNumber',
         )
         result = self.web3.manager.request_blocking(
             method,
@@ -178,14 +178,14 @@ class Eth(Module):
 
     def getUncleCount(self, block_identifier):
         """
-        `eth_getUncleCountByBlockHash`
-        `eth_getUncleCountByBlockNumber`
+        `hpb_getUncleCountByBlockHash`
+        `hpb_getUncleCountByBlockNumber`
         """
         method = select_method_for_block_identifier(
             block_identifier,
-            if_predefined='eth_getUncleCountByBlockNumber',
-            if_hash='eth_getUncleCountByBlockHash',
-            if_number='eth_getUncleCountByBlockNumber',
+            if_predefined='hpb_getUncleCountByBlockNumber',
+            if_hash='hpb_getUncleCountByBlockHash',
+            if_number='hpb_getUncleCountByBlockNumber',
         )
         result = self.web3.manager.request_blocking(
             method,
@@ -197,14 +197,14 @@ class Eth(Module):
 
     def getUncleByBlock(self, block_identifier, uncle_index):
         """
-        `eth_getUncleByBlockHashAndIndex`
-        `eth_getUncleByBlockNumberAndIndex`
+        `hpb_getUncleByBlockHashAndIndex`
+        `hpb_getUncleByBlockNumberAndIndex`
         """
         method = select_method_for_block_identifier(
             block_identifier,
-            if_predefined='eth_getUncleByBlockNumberAndIndex',
-            if_hash='eth_getUncleByBlockHashAndIndex',
-            if_number='eth_getUncleByBlockNumberAndIndex',
+            if_predefined='hpb_getUncleByBlockNumberAndIndex',
+            if_hash='hpb_getUncleByBlockHashAndIndex',
+            if_number='hpb_getUncleByBlockNumberAndIndex',
         )
         result = self.web3.manager.request_blocking(
             method,
@@ -218,7 +218,7 @@ class Eth(Module):
 
     def getTransaction(self, transaction_hash):
         result = self.web3.manager.request_blocking(
-            "eth_getTransactionByHash",
+            "hpb_getTransactionByHash",
             [transaction_hash],
         )
         if result is None:
@@ -234,14 +234,14 @@ class Eth(Module):
 
     def getTransactionByBlock(self, block_identifier, transaction_index):
         """
-        `eth_getTransactionByBlockHashAndIndex`
-        `eth_getTransactionByBlockNumberAndIndex`
+        `hpb_getTransactionByBlockHashAndIndex`
+        `hpb_getTransactionByBlockNumberAndIndex`
         """
         method = select_method_for_block_identifier(
             block_identifier,
-            if_predefined='eth_getTransactionByBlockNumberAndIndex',
-            if_hash='eth_getTransactionByBlockHashAndIndex',
-            if_number='eth_getTransactionByBlockNumberAndIndex',
+            if_predefined='hpb_getTransactionByBlockNumberAndIndex',
+            if_hash='hpb_getTransactionByBlockHashAndIndex',
+            if_number='hpb_getTransactionByBlockNumberAndIndex',
         )
         result = self.web3.manager.request_blocking(
             method,
@@ -267,7 +267,7 @@ class Eth(Module):
 
     def getTransactionReceipt(self, transaction_hash):
         result = self.web3.manager.request_blocking(
-            "eth_getTransactionReceipt",
+            "hpb_getTransactionReceipt",
             [transaction_hash],
         )
         if result is None:
@@ -278,7 +278,7 @@ class Eth(Module):
         if block_identifier is None:
             block_identifier = self.defaultBlock
         return self.web3.manager.request_blocking(
-            "eth_getTransactionCount",
+            "hpb_getTransactionCount",
             [account, block_identifier],
         )
 
@@ -307,30 +307,30 @@ class Eth(Module):
             )
 
         return self.web3.manager.request_blocking(
-            "eth_sendTransaction",
+            "hpb_sendTransaction",
             [transaction],
         )
 
     def sendRawTransaction(self, raw_transaction):
         return self.web3.manager.request_blocking(
-            "eth_sendRawTransaction",
+            "hpb_sendRawTransaction",
             [raw_transaction],
         )
 
     def sign(self, account, data=None, hexstr=None, text=None):
         message_hex = to_hex(data, hexstr=hexstr, text=text)
         return self.web3.manager.request_blocking(
-            "eth_sign", [account, message_hex],
+            "hpb_sign", [account, message_hex],
         )
 
     def signTransaction(self, transaction):
         return self.web3.manager.request_blocking(
-            "eth_signTransaction", [transaction],
+            "hpb_signTransaction", [transaction],
         )
 
     def signTypedData(self, account, jsonMessage):
         return self.web3.manager.request_blocking(
-            "eth_signTypedData", [account, jsonMessage],
+            "hpb_signTypedData", [account, jsonMessage],
         )
 
     @apply_to_return_value(HexBytes)
@@ -343,7 +343,7 @@ class Eth(Module):
         if block_identifier is None:
             block_identifier = self.defaultBlock
         return self.web3.manager.request_blocking(
-            "eth_call",
+            "hpb_call",
             [transaction, block_identifier],
         )
 
@@ -358,7 +358,7 @@ class Eth(Module):
             params = [transaction, block_identifier]
 
         return self.web3.manager.request_blocking(
-            "eth_estimateGas",
+            "hpb_estimateGas",
             params,
         )
 
@@ -371,12 +371,12 @@ class Eth(Module):
         if is_string(filter_params):
             if filter_params == "latest":
                 filter_id = self.web3.manager.request_blocking(
-                    "eth_newBlockFilter", [],
+                    "hpb_newBlockFilter", [],
                 )
                 return BlockFilter(self.web3, filter_id)
             elif filter_params == "pending":
                 filter_id = self.web3.manager.request_blocking(
-                    "eth_newPendingTransactionFilter", [],
+                    "hpb_newPendingTransactionFilter", [],
                 )
                 return TransactionFilter(self.web3, filter_id)
             else:
@@ -386,7 +386,7 @@ class Eth(Module):
                 )
         elif isinstance(filter_params, dict):
             _filter_id = self.web3.manager.request_blocking(
-                "eth_newFilter",
+                "hpb_newFilter",
                 [filter_params],
             )
             return LogFilter(self.web3, _filter_id)
@@ -399,32 +399,32 @@ class Eth(Module):
 
     def getFilterChanges(self, filter_id):
         return self.web3.manager.request_blocking(
-            "eth_getFilterChanges", [filter_id],
+            "hpb_getFilterChanges", [filter_id],
         )
 
     def getFilterLogs(self, filter_id):
         return self.web3.manager.request_blocking(
-            "eth_getFilterLogs", [filter_id],
+            "hpb_getFilterLogs", [filter_id],
         )
 
     def getLogs(self, filter_params):
         return self.web3.manager.request_blocking(
-            "eth_getLogs", [filter_params],
+            "hpb_getLogs", [filter_params],
         )
 
     def submitHashrate(self, hashrate, node_id):
         return self.web3.manager.request_blocking(
-            "eth_submitHashrate", [hashrate, node_id],
+            "hpb_submitHashrate", [hashrate, node_id],
         )
 
     def submitWork(self, nonce, pow_hash, mix_digest):
         return self.web3.manager.request_blocking(
-            "eth_submitWork", [nonce, pow_hash, mix_digest],
+            "hpb_submitWork", [nonce, pow_hash, mix_digest],
         )
 
     def uninstallFilter(self, filter_id):
         return self.web3.manager.request_blocking(
-            "eth_uninstallFilter", [filter_id],
+            "hpb_uninstallFilter", [filter_id],
         )
 
     def contract(self,
@@ -446,7 +446,7 @@ class Eth(Module):
         raise DeprecationWarning("This method has been deprecated as of EIP 1474.")
 
     def getWork(self):
-        return self.web3.manager.request_blocking("eth_getWork", [])
+        return self.web3.manager.request_blocking("hpb_getWork", [])
 
     def generateGasPrice(self, transaction_params=None):
         if self.gasPriceStrategy:

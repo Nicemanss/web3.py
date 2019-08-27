@@ -38,8 +38,8 @@ from web3._utils.module import (
 from web3._utils.normalizers import (
     abi_ens_resolver,
 )
-from web3.eth import (
-    Eth,
+from web3.hpb import (
+    Hpb,
 )
 from web3.geth import (
     Geth,
@@ -85,7 +85,7 @@ from web3.version import (
 
 def get_default_modules():
     return {
-        "eth": (Eth,),
+        "hpb": (Hpb,),
         "net": (Net,),
         "version": (Version,),
         "parity": (Parity, {
