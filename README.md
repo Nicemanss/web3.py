@@ -30,11 +30,13 @@ pip install -e .[dev]
 
 To test the installation, you can run the following command inside this directory:
 
-```python3 example.py
+```sh
+python3 example.py
 ```
 
 It should output something similar to:
-```root@local:~# python3 example.py
+```
+root@local:~# python3 example.py
 Is connected to https://node.myhpbwallet.com ? True
 Current Block Number: 3679511
 Account: 0xb0617bf785b4ce32a00bdffc7e093ad82c2e0925
