@@ -8,12 +8,6 @@
 # Ubuntu
 sudo update
 sudo apt-get -y install libssl-dev libffi-dev autoconf automake libtool
-
-# ArchLinux
-sudo pacman -Sy libsecp256k1
-
-# Fedora
-sudo dnf install openssl-devel libffi-devel autoconf automake libtool
 ```
 
 ## Install and configure Python
@@ -38,3 +32,18 @@ pip install -e .[dev]
 
 ```
 
+## Test
+To test the installation, run the following command:
+
+```sh
+python3 example.py
+```
+
+It should output something similar to:
+```
+root@local:~# python3 example.py
+Is connected to https://node.myhpbwallet.com ? True
+Current Block Number: 3679511
+Account: 0xb0617bf785b4ce32a00bdffc7e093ad82c2e0925
+Balance: 8135.9512525
+```
