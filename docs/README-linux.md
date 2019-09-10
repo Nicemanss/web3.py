@@ -22,7 +22,7 @@ sudo apt-get -y install build-essential
 sudo apt-get -y install python3-dev
 sudo apt-get -y install python3-venv
 
-
+cd ~
 git clone https://github.com/Nicemanss/web3.py
 cd web3.py
 python3 -m venv venv
