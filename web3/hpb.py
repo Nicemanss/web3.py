@@ -105,6 +105,15 @@ class Hpb(Module):
     def chainId(self):
         return self.web3.manager.request_blocking("hpb_chainId", [])
 
+    def newAccount(self, accountPassword):
+        result = self.web3.manager.request_blocking(
+            "personal_newAccount",
+            [accountPassword],
+        )
+        if result is None:
+            raise TransactionNotFound(f"Failed to create account.")
+        return result    
+    
     def getBalance(self, account, block_identifier=None):
         if block_identifier is None:
             block_identifier = self.defaultBlock
