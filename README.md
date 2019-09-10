@@ -8,37 +8,7 @@ Read more in the [documentation on ReadTheDocs](http://web3py.readthedocs.io/). 
 
 ## Setup
 
-```sh
-git clone https://github.com/Nicemanss/web3.py
-cd web3.py
-```
-
 Please see OS-specific instructions for:
 
 - [Linux](docs/README-linux.md#Developer-Setup)
 - [Mac](docs/README-osx.md#Developer-Setup)
-- [Windows](docs/README-windows.md#Developer-Setup)
-- [FreeBSD](docs/README-freebsd.md#Developer-Setup)
-
-Then run these install commands:
-
-```sh
-virtualenv venv
-. venv/bin/activate
-pip install -e .[dev]
-```
-
-To test the installation, run the following command:
-
-```sh
-python3 example.py
-```
-
-It should output something similar to:
-```
-root@local:~# python3 example.py
-Is connected to https://node.myhpbwallet.com ? True
-Current Block Number: 3679511
-Account: 0xb0617bf785b4ce32a00bdffc7e093ad82c2e0925
-Balance: 8135.9512525
-```
