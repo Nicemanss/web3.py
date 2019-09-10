@@ -6,8 +6,8 @@
 
 ```sh
 # Ubuntu
-sudo update -y
-sudo apt-get install libssl-dev libffi-dev autoconf automake libtool -y
+sudo update
+sudo apt-get -y install libssl-dev libffi-dev autoconf automake libtool
 
 # ArchLinux
 sudo pacman -Sy libsecp256k1
