@@ -9,7 +9,7 @@ Read more in the [documentation on ReadTheDocs](http://web3py.readthedocs.io/). 
 ## Setup
 
 ```sh
-git clone git@github.com:Nicemanss/web3.py.git
+git clone https://github.com/Nicemanss/web3.py
 cd web3.py
 ```
 
