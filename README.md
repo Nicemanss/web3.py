@@ -11,4 +11,3 @@ Read more in the [documentation on ReadTheDocs](http://web3py.readthedocs.io/). 
 Please see OS-specific instructions for:
 
 - [Linux](docs/README-linux.md#Developer-Setup)
-- [Mac](docs/README-osx.md#Developer-Setup)
